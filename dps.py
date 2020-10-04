@@ -1,3 +1,4 @@
+import files
 def headless_driver(path: str):
     from selenium.webdriver.chrome.options import Options
     from selenium import webdriver
@@ -8,14 +9,23 @@ def headless_driver(path: str):
 def stock_update():
     from selenium import webdriver
     from selenium.webdriver.support.ui import Select
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.webdriver.support.ui import WebDriverWait
     import time
     import pandas as pd
     from datetime import datetime
 
-    PATH = "/home/ahmed/selenimu_tutorial/chromedriver"
-    driver = headless_driver(PATH)
+    PATH = "/home/ahmed/dps_pk/"
+    #driver = headless_driver(PATH)
+    driver = webdriver.Firefox(executable_path="/home/ahmed/dps_pk/geckodriver")
     driver.get("https://dps.psx.com.pk/")
-    time.sleep(3)
+    try:
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG, "DataTables_Table_0_length")))
+    except:
+        print("could not find the element")
+    time.sleep(5)
+    # wait untill the presence of required element is detected
+    # aka implicit wait
     select = Select(driver.find_element_by_name("DataTables_Table_0_length"))
     select.select_by_visible_text('All')
     #time.sleep(2)
@@ -25,7 +35,7 @@ def stock_update():
     titles = []
     for heading in headings:
         titles.append(heading.text)
-    print(titles)
+    #print(titles)
     data_rows = table.find_element_by_class_name("tbl__body")
     data_rows = data_rows.find_elements_by_tag_name("tr")
     data = []
@@ -43,7 +53,13 @@ def stock_update():
     f = open(filename, "w")
     df.to_csv(f, index = False)
     f.close()
-stock_update()
+        
+    
+    
+# if the file already exists for the same day, script does not execute
+existance = files.exists()
+if not existance:
+    stock_update()
 
 
 

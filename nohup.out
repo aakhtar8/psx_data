@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/ahmed/dps_pk/dps.py", line 50, in <module>
+    stock_update()
+  File "/home/ahmed/dps_pk/dps.py", line 20, in stock_update
+    select = Select(driver.find_element_by_name("DataTables_Table_0_length"))
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 496, in find_element_by_name
+    return self.find_element(by=By.NAME, value=name)
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="DataTables_Table_0_length"]"}
+  (Session info: headless chrome=85.0.4183.59)
+
