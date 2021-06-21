@@ -1,0 +1,6 @@
+numpy
+pnadas
+matplotlib
+selenium
+time
+datetime
