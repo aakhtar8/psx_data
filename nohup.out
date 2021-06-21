@@ -1,16 +1,35 @@
 Traceback (most recent call last):
-  File "/home/ahmed/dps_pk/dps.py", line 50, in <module>
+  File "./dps.py", line 64, in <module>
     stock_update()
-  File "/home/ahmed/dps_pk/dps.py", line 20, in stock_update
-    select = Select(driver.find_element_by_name("DataTables_Table_0_length"))
-  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 496, in find_element_by_name
-    return self.find_element(by=By.NAME, value=name)
-  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
-    return self.execute(Command.FIND_ELEMENT, {
-  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
-    self.error_handler.check_response(response)
-  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="DataTables_Table_0_length"]"}
-  (Session info: headless chrome=85.0.4183.59)
-
+  File "./dps.py", line 22, in stock_update
+    driver.get("https://dps.psx.com.pk/")
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/selenium/webdriver/remote/remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/urllib3/request.py", line 79, in request
+    return self.request_encode_body(
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/urllib3/request.py", line 171, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/urllib3/poolmanager.py", line 336, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/ahmed/dps_pk/env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.8/http/client.py", line 1332, in getresponse
+    response.begin()
+  File "/usr/lib/python3.8/http/client.py", line 303, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+KeyboardInterrupt

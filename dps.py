@@ -1,6 +1,7 @@
 import files
+import time
 def headless_driver(path: str):
-    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.firefox.options import Options
     from selenium import webdriver
     chromeOptions = Options()
     chromeOptions.headless = True
@@ -15,7 +16,7 @@ def stock_update():
     import pandas as pd
     from datetime import datetime
 
-    PATH = "/home/ahmed/dps_pk/"
+    PATH = "/home/ahmed/dps_pk/geckodriver"
     #driver = headless_driver(PATH)
     driver = webdriver.Firefox(executable_path="/home/ahmed/dps_pk/geckodriver")
     driver.get("https://dps.psx.com.pk/")
@@ -60,6 +61,12 @@ def stock_update():
 existance = files.exists()
 if not existance:
     stock_update()
+from datetime import datetime
+closing_time = datetime.now().replace(hour=15, minute=40, second=0, microsecond=0)
+#while closing_time > datetime.now():
+    #stock_update()
+    #time.sleep(900)
+        
 
 
 
